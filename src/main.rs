@@ -1,11 +1,20 @@
 // import the io library from "standard"
 // this allows for user input
 use std::io;
+// import Rng from rand to enable random numbers
+use rand::Rng;
+
 
 // declare the main function
 fn main() {
     // print some instruction strings
     println!("Guess the number!");
+
+    // set a variable for the random number
+    let secret_number = rand::thread_rng().gen_range(1..=100);
+
+    println!("The secret number is: {secret_number}");
+
 
     println!("Please input your guess.");
 
