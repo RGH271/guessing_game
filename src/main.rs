@@ -5,7 +5,9 @@ use std::io;
 use std::cmp::Ordering;
 // import Rng from rand to enable random numbers
 use rand::Rng;
-
+// import librarys for sleeping
+use std::thread;
+use std::time::Duration;
 
 // declare the main function
 fn main() {
@@ -36,11 +38,12 @@ fn main() {
             // remove any whitespace from "guess"
             .trim()
             // parse converts a string to another type
-            .parse() {
-                // use match now instead of expect so the program doesn't crash
-                Ok(num) => num,
-                Err(_) => continue,
-            };
+            .parse()
+        {
+            // use match now instead of expect so the program doesn't crash
+            Ok(num) => num,
+            Err(_) => continue,
+        };
 
         println!("You guessed: {}", guess);
 
@@ -50,8 +53,9 @@ fn main() {
             Ordering::Greater => println!("Too big!"),
             Ordering::Equal => {
                 println!("You win!");
+                thread::sleep(Duration::from_secs(1));
                 break;
-            } 
+            }
         }
     }
 }
